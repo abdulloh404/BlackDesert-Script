@@ -2,17 +2,23 @@
 import subprocess
 import time
 import threading
+import random
 from pynput import keyboard
 
 running = False
 restart_requested = False
 current_thread = None
 
+def press_key(key):
+    subprocess.call(['xdotool', 'key', key])
+
 def press_shift_w_and_turn_a():
     global running, restart_requested
 
     try:
-        # skill 1
+        
+
+        # monster group1
         if not running: return
         subprocess.call(['xdotool', 'key', '1'])
         print("[DEBUG] กด 1")
@@ -26,9 +32,48 @@ def press_shift_w_and_turn_a():
         if not running: return
         subprocess.call(['xdotool', 'click', '3'])  # คลิกขวาครั้งที่ 2
         print("[DEBUG] คลิกขวาครั้งที่ 2")
+        time.sleep(1)
 
-        # เคลื่อนที่
-        # เพิ่มส่วนอื่นได้ต่อท้าย...
+        # monster group2
+        subprocess.call(['xdotool', 'keydown', 'Shift_L'])
+        time.sleep(0.05)
+        subprocess.call(['xdotool', 'keydown', 'w'])
+        time.sleep(0.05)
+        subprocess.call(['xdotool', 'keydown', 'a'])
+        time.sleep(0.35)
+        subprocess.call(['xdotool', 'keyup', 'Shift_L'])
+        subprocess.call(['xdotool', 'keyup', 'w'])
+        subprocess.call(['xdotool', 'keyup', 'a'])
+        subprocess.call(['xdotool', 'keydown', 'Shift_L'])
+        time.sleep(0.05)
+        subprocess.call(['xdotool', 'keydown', 'w'])
+        time.sleep(1.5)
+        subprocess.call(['xdotool', 'keyup', 'Shift_L'])
+        subprocess.call(['xdotool', 'keyup', 'w'])
+
+        subprocess.call(['xdotool', 'key', '2'])
+        time.sleep(0.8)
+        for _ in range(6):
+            press_key("F")
+            time.sleep(0.7)
+
+        time.sleep(0.6)
+        subprocess.call(['xdotool', 'key', '3'])
+        time.sleep(0.8)
+
+        # monster group3
+        subprocess.call(['xdotool', 'keydown', 'Shift_L'])
+        time.sleep(0.05)
+        subprocess.call(['xdotool', 'keydown', 'w'])
+        time.sleep(0.05)
+        subprocess.call(['xdotool', 'keydown', 'a'])
+        time.sleep(0.9)
+        subprocess.call(['xdotool', 'keyup', 'a'])
+        time.sleep(4)
+        subprocess.call(['xdotool', 'keyup', 'Shift_L'])
+        subprocess.call(['xdotool', 'keyup', 'w'])
+        time.sleep(0.2)
+        subprocess.call(['xdotool', 'key', '4'])
 
     finally:
         if restart_requested:
