@@ -16,8 +16,6 @@ def press_shift_w_and_turn_a():
     global running, restart_requested
 
     try:
-        
-
         # monster group1
         if not running: return
         subprocess.call(['xdotool', 'key', '1'])
@@ -25,12 +23,12 @@ def press_shift_w_and_turn_a():
         time.sleep(1)
 
         if not running: return
-        subprocess.call(['xdotool', 'click', '3'])  # คลิกขวา
+        subprocess.call(['xdotool', 'click', '3'])
         print("[DEBUG] คลิกขวาครั้งที่ 1")
         time.sleep(0.75)
 
         if not running: return
-        subprocess.call(['xdotool', 'click', '3'])  # คลิกขวาครั้งที่ 2
+        subprocess.call(['xdotool', 'click', '3'])
         print("[DEBUG] คลิกขวาครั้งที่ 2")
         time.sleep(1)
 
@@ -74,6 +72,25 @@ def press_shift_w_and_turn_a():
         subprocess.call(['xdotool', 'keyup', 'w'])
         time.sleep(0.2)
         subprocess.call(['xdotool', 'key', '4'])
+        time.sleep(0.3)
+        subprocess.call(['xdotool', 'key', '3'])
+
+        # monster group4
+        subprocess.call(['xdotool', 'keydown', 'Shift_L'])
+        time.sleep(0.05)
+        subprocess.call(['xdotool', 'keydown', 'w'])
+        time.sleep(0.05)
+        subprocess.call(['xdotool', 'keydown', 'a'])
+        time.sleep(0.9)
+        subprocess.call(['xdotool', 'keyup', 'a'])
+        time.sleep(4)
+        subprocess.call(['xdotool', 'keyup', 'Shift_L'])
+        subprocess.call(['xdotool', 'keyup', 'w'])
+        time.sleep(0.2)
+        subprocess.call(['xdotool', 'key', '4'])
+        time.sleep(0.3)
+        subprocess.call(['xdotool', 'key', '3'])
+
 
     finally:
         if restart_requested:
